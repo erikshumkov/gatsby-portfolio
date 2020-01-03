@@ -27,20 +27,20 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-d594153672010e25c923.js"
+    "url": "webpack-runtime-ea5f198a8344a1d630f8.js"
   },
   {
     "url": "commons-40a8d4cd8ffdf39d0981.js"
   },
   {
-    "url": "app-e8d5d4c572df103c8cdd.js"
+    "url": "app-f29010b2f2e75f6139c0.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-87ef582ba388a83f73c0.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "352ba961ed12fbf69e23460c2ec21973"
+    "revision": "f3d141c8fe3e3047b1484bfdc40740c2"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -136,12 +136,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/gatsby-portfolio`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/gatsby-portfolio/app-e8d5d4c572df103c8cdd.js`))) {
+  if (!resources || !(await caches.match(`/app-f29010b2f2e75f6139c0.js`))) {
     return await fetch(event.request)
   }
 
@@ -154,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/gatsby-portfolio/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
