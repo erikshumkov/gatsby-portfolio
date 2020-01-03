@@ -1,3 +1,0 @@
-# Portfolio built with Gatsby
-
-
